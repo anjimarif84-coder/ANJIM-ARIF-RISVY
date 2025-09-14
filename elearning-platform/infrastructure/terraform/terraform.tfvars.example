@@ -1,0 +1,36 @@
+# AWS Configuration
+aws_region = "us-east-1"
+environment = "production"
+project_name = "elearning"
+
+# Network Configuration
+vpc_cidr = "10.0.0.0/16"
+public_subnet_cidrs = ["10.0.1.0/24", "10.0.2.0/24"]
+private_subnet_cidrs = ["10.0.10.0/24", "10.0.20.0/24"]
+database_subnet_cidrs = ["10.0.30.0/24", "10.0.40.0/24"]
+
+# Database Configuration
+db_instance_class = "db.t3.micro"
+db_name = "elearning_db"
+db_username = "elearning_user"
+db_allocated_storage = 20
+db_max_allocated_storage = 100
+
+# ECS Configuration
+backend_cpu = 512
+backend_memory = 1024
+backend_desired_count = 2
+backend_min_capacity = 1
+backend_max_capacity = 10
+
+# ElastiCache Configuration
+redis_node_type = "cache.t3.micro"
+redis_num_cache_nodes = 1
+
+# S3 Configuration
+s3_bucket_name = "elearning-files"
+
+# Domain Configuration (optional)
+domain_name = "yourdomain.com"
+api_subdomain = "api"
+certificate_arn = "" # Leave empty to create a new certificate
