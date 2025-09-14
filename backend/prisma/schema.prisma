@@ -1,0 +1,125 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String   @id @default(cuid())
+  email         String   @unique
+  passwordHash  String
+  role          Role     @default(STUDENT)
+  name          String
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  enrollments   Enrollment[]
+  quizResponses QuizResponse[]
+  progresses    Progress[]
+  payments      Payment[]
+}
+
+enum Role {
+  ADMIN
+  TEACHER
+  STUDENT
+}
+
+model Course {
+  id          String   @id @default(cuid())
+  title       String
+  description String
+  teacherId   String
+  teacher     User     @relation(fields: [teacherId], references: [id])
+  lessons     Lesson[]
+  enrollments Enrollment[]
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Lesson {
+  id           String   @id @default(cuid())
+  courseId     String
+  title        String
+  videoKey     String   // S3 key
+  order        Int
+  course       Course   @relation(fields: [courseId], references: [id])
+  quizzes      Quiz[]
+  progresses   Progress[]
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model Enrollment {
+  id        String   @id @default(cuid())
+  userId    String
+  courseId  String
+  user      User     @relation(fields: [userId], references: [id])
+  course    Course   @relation(fields: [courseId], references: [id])
+  createdAt DateTime @default(now())
+  @@unique([userId, courseId])
+}
+
+model Quiz {
+  id        String   @id @default(cuid())
+  lessonId  String
+  title     String
+  questions Json
+  lesson    Lesson   @relation(fields: [lessonId], references: [id])
+  responses QuizResponse[]
+  createdAt DateTime @default(now())
+}
+
+model QuizResponse {
+  id        String   @id @default(cuid())
+  quizId    String
+  userId    String
+  answers   Json
+  score     Int
+  quiz      Quiz     @relation(fields: [quizId], references: [id])
+  user      User     @relation(fields: [userId], references: [id])
+  createdAt DateTime @default(now())
+}
+
+model Progress {
+  id        String   @id @default(cuid())
+  userId    String
+  lessonId  String
+  status    ProgressStatus @default(NOT_STARTED)
+  percentage Int     @default(0)
+  user      User     @relation(fields: [userId], references: [id])
+  lesson    Lesson   @relation(fields: [lessonId], references: [id])
+  updatedAt DateTime @updatedAt
+  createdAt DateTime @default(now())
+  @@unique([userId, lessonId])
+}
+
+enum ProgressStatus {
+  NOT_STARTED
+  IN_PROGRESS
+  COMPLETED
+}
+
+model Payment {
+  id            String   @id @default(cuid())
+  userId        String
+  courseId      String
+  stripeSession String   @unique
+  amountCents   Int
+  currency      String
+  status        PaymentStatus @default(PENDING)
+  user          User     @relation(fields: [userId], references: [id])
+  course        Course   @relation(fields: [courseId], references: [id])
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+enum PaymentStatus {
+  PENDING
+  PAID
+  FAILED
+  REFUNDED
+}
+
