@@ -1,0 +1,23 @@
+# AWS Configuration
+aws_region = "us-east-1"
+project_name = "elearning"
+environment = "production"
+
+# Database Configuration
+rds_instance_class = "db.t3.micro"
+db_username = "elearning_user"
+db_password = "your-secure-database-password"
+
+# Redis Configuration
+redis_node_type = "cache.t3.micro"
+
+# JWT Configuration
+jwt_secret = "your-super-secret-jwt-key-change-in-production"
+jwt_refresh_secret = "your-super-secret-refresh-key-change-in-production"
+
+# Stripe Configuration
+stripe_secret_key = "sk_live_your_stripe_secret_key"
+stripe_webhook_secret = "whsec_your_webhook_secret"
+
+# ECR Repository
+ecr_repository_url = "123456789012.dkr.ecr.us-east-1.amazonaws.com/elearning-backend"
