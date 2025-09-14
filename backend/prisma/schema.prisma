@@ -1,0 +1,208 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum UserRole {
+  ADMIN
+  TEACHER
+  STUDENT
+}
+
+enum CourseStatus {
+  DRAFT
+  PUBLISHED
+  ARCHIVED
+}
+
+enum LessonType {
+  VIDEO
+  TEXT
+  QUIZ
+}
+
+enum QuizType {
+  MULTIPLE_CHOICE
+  TRUE_FALSE
+  FILL_IN_BLANK
+}
+
+enum PaymentStatus {
+  PENDING
+  COMPLETED
+  FAILED
+  REFUNDED
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String
+  firstName String
+  lastName  String
+  role      UserRole @default(STUDENT)
+  avatar    String?
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  coursesCreated Course[]
+  enrollments    Enrollment[]
+  quizResponses  QuizResponse[]
+  payments       Payment[]
+  refreshTokens  RefreshToken[]
+
+  @@map("users")
+}
+
+model RefreshToken {
+  id        String   @id @default(cuid())
+  token     String   @unique
+  userId    String
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("refresh_tokens")
+}
+
+model Course {
+  id          String       @id @default(cuid())
+  title       String
+  description String
+  thumbnail   String?
+  price       Decimal      @db.Decimal(10, 2)
+  status      CourseStatus @default(DRAFT)
+  instructorId String
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+
+  // Relations
+  instructor  User       @relation(fields: [instructorId], references: [id])
+  lessons     Lesson[]
+  enrollments Enrollment[]
+
+  @@map("courses")
+}
+
+model Lesson {
+  id          String     @id @default(cuid())
+  title       String
+  description String?
+  content     String?
+  videoUrl    String?
+  duration    Int? // in minutes
+  order       Int
+  type        LessonType @default(VIDEO)
+  courseId    String
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+
+  // Relations
+  course       Course        @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  quiz         Quiz?
+  progress     LessonProgress[]
+
+  @@map("lessons")
+}
+
+model Quiz {
+  id        String   @id @default(cuid())
+  title     String
+  questions Json     // Array of question objects
+  lessonId  String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  lesson    Lesson         @relation(fields: [lessonId], references: [id], onDelete: Cascade)
+  responses QuizResponse[]
+
+  @@map("quizzes")
+}
+
+model Enrollment {
+  id        String   @id @default(cuid())
+  userId    String
+  courseId  String
+  enrolledAt DateTime @default(now())
+  completedAt DateTime?
+
+  // Relations
+  user   User   @relation(fields: [userId], references: [id])
+  course Course @relation(fields: [courseId], references: [id])
+
+  @@unique([userId, courseId])
+  @@map("enrollments")
+}
+
+model LessonProgress {
+  id        String   @id @default(cuid())
+  userId    String
+  lessonId  String
+  completed Boolean  @default(false)
+  progress  Int      @default(0) // percentage
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  lesson Lesson @relation(fields: [lessonId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, lessonId])
+  @@map("lesson_progress")
+}
+
+model QuizResponse {
+  id       String @id @default(cuid())
+  userId   String
+  quizId   String
+  answers  Json   // Array of answer objects
+  score    Int    // percentage
+  submittedAt DateTime @default(now())
+
+  // Relations
+  user User @relation(fields: [userId], references: [id])
+  quiz Quiz @relation(fields: [quizId], references: [id])
+
+  @@unique([userId, quizId])
+  @@map("quiz_responses")
+}
+
+model Payment {
+  id            String        @id @default(cuid())
+  userId        String
+  courseId      String
+  amount        Decimal       @db.Decimal(10, 2)
+  currency      String        @default("usd")
+  status        PaymentStatus @default(PENDING)
+  stripePaymentIntentId String?
+  stripeSessionId String?
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+
+  // Relations
+  user   User   @relation(fields: [userId], references: [id])
+  course Course @relation(fields: [courseId], references: [id])
+
+  @@map("payments")
+}
+
+model Notification {
+  id        String   @id @default(cuid())
+  userId    String
+  title     String
+  message   String
+  type      String   // email, push, in-app
+  read      Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  @@map("notifications")
+}
