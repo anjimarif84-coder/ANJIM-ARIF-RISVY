@@ -1,0 +1,72 @@
+openapi: 3.0.3
+info:
+  title: E-Learning API
+  version: 0.1.0
+servers:
+  - url: http://localhost:4000
+paths:
+  /api/auth/signup:
+    post:
+      summary: Sign up
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email: { type: string }
+                password: { type: string }
+                name: { type: string }
+      responses:
+        '201': { description: Created }
+  /api/auth/login:
+    post:
+      summary: Login
+      responses:
+        '200': { description: OK }
+  /api/courses:
+    get:
+      summary: List courses
+      responses:
+        '200': { description: OK }
+    post:
+      summary: Create course
+      responses:
+        '201': { description: Created }
+  /api/courses/{id}:
+    get:
+      summary: Get course
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        '200': { description: OK }
+  /api/quizzes/{quizId}/submit:
+    post:
+      summary: Submit quiz
+      parameters:
+        - name: quizId
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        '201': { description: Created }
+  /api/payments/checkout/{courseId}:
+    post:
+      summary: Start checkout session
+      parameters:
+        - name: courseId
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        '200': { description: OK }
+  /api/payments/webhook:
+    post:
+      summary: Stripe webhook
+      responses:
+        '200': { description: OK }
+

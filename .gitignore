@@ -1,0 +1,33 @@
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-store/
+
+# Build
+dist/
+build/
+.turbo/
+
+# Env
+.env
+backend/.env
+frontend/.env
+
+# Editor
+.DS_Store
+.idea/
+.vscode/
+
+# Prisma
+backend/prisma/*.db
+backend/prisma/migrations/*/steps.json
+
+# Cypress
+frontend/cypress/videos/
+frontend/cypress/screenshots/
+
+# Coverage
+coverage/
+
