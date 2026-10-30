@@ -90,14 +90,14 @@ footer{margin-top:110px;border-top:1px solid var(--line);padding:50px 0 40px;bac
 body.is404 main,body.is404 footer,body.is404 header{display:none}body.is404 #nf{display:grid}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}.rv{opacity:1!important;transform:none!important}}
 /* ===== Ask Risvy AI chatbot ===== */
-#ai-fab{position:fixed;right:max(18px,env(safe-area-inset-right,0px));bottom:max(18px,env(safe-area-inset-bottom,0px));z-index:60;display:flex;align-items:center;gap:12px;font-family:"Space Grotesk",Inter,sans-serif}
+#ai-fab{position:fixed;right:max(18px,env(safe-area-inset-right,0px));bottom:calc(76px + env(safe-area-inset-bottom,0px));z-index:60;display:flex;align-items:center;gap:12px;font-family:"Space Grotesk",Inter,sans-serif}
 #ai-fab .tip{background:rgba(10,10,10,.88);border:1px solid var(--line);color:var(--ink);font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:12px 16px;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);cursor:pointer;transition:.25s}
 #ai-fab .tip:hover{border-color:var(--acc);color:var(--acc)}
 #ai-btn{position:relative;width:62px;height:62px;border-radius:50%;border:1.5px solid var(--acc);background:rgba(10,10,10,.9);color:var(--acc);display:grid;place-items:center;cursor:pointer;transition:.25s;box-shadow:0 0 0 0 rgba(250,204,21,.45);animation:aiPulse 2.8s infinite}
 #ai-btn:hover{background:var(--acc);color:#000;transform:scale(1.06)}
 #ai-btn .dot{position:absolute;top:3px;right:3px;width:10px;height:10px;border-radius:50%;background:var(--acc);border:2px solid #0a0a0a}
 @keyframes aiPulse{0%{box-shadow:0 0 0 0 rgba(250,204,21,.4)}70%,100%{box-shadow:0 0 0 16px rgba(250,204,21,0)}}
-#ai-panel{position:fixed;right:max(18px,env(safe-area-inset-right,0px));bottom:max(92px,calc(env(safe-area-inset-bottom,0px) + 80px));z-index:61;width:min(400px,calc(100vw - 24px));height:min(640px,calc(100dvh - 120px));display:none;flex-direction:column;background:linear-gradient(160deg,#171717,#0b0b0b);border:1px solid #3a3320;box-shadow:0 30px 80px rgba(0,0,0,.7),0 0 0 1px rgba(250,204,21,.08);border-radius:18px;overflow:hidden;font-family:Inter,system-ui,sans-serif;opacity:0;transform:translateY(14px) scale(.98);transition:opacity .25s,transform .25s}
+#ai-panel{position:fixed;right:max(18px,env(safe-area-inset-right,0px));bottom:calc(150px + env(safe-area-inset-bottom,0px));z-index:61;width:min(400px,calc(100vw - 24px));height:min(640px,calc(100dvh - 180px));display:none;flex-direction:column;background:linear-gradient(160deg,#171717,#0b0b0b);border:1px solid #3a3320;box-shadow:0 30px 80px rgba(0,0,0,.7),0 0 0 1px rgba(250,204,21,.08);border-radius:18px;overflow:hidden;font-family:Inter,system-ui,sans-serif;opacity:0;transform:translateY(14px) scale(.98);transition:opacity .25s,transform .25s}
 #ai-panel.open{display:flex}#ai-panel.show{opacity:1;transform:none}
 .ai-h{display:flex;align-items:center;gap:12px;padding:14px 14px 12px;border-bottom:1px solid var(--line)}
 .ai-av{width:42px;height:42px;border-radius:12px;border:1px solid #4a4020;background:#16130a;color:var(--acc);display:grid;place-items:center;flex:none}
@@ -128,8 +128,20 @@ body.is404 main,body.is404 footer,body.is404 header{display:none}body.is404 #nf{
 .ai-f button{width:46px;border:0;border-radius:12px;background:var(--acc);color:#000;cursor:pointer;display:grid;place-items:center;flex:none;transition:.2s}
 .ai-f button:hover{filter:brightness(1.1)}
 .ai-ft{padding:2px 14px calc(10px + env(safe-area-inset-bottom,0px)*0);font-size:10.5px;color:#7a7a7a;text-align:center;letter-spacing:.04em}
-@media(max-width:560px){#ai-fab .tip{display:none}#ai-panel{right:8px;left:8px;width:auto;bottom:calc(84px + env(safe-area-inset-bottom,0px));height:calc(100dvh - 110px - env(safe-area-inset-top,0px));border-radius:16px}}
+@media(max-width:560px){#ai-fab .tip{display:none}#ai-panel{right:8px;left:8px;width:auto;bottom:calc(76px + env(safe-area-inset-bottom,0px));height:calc(100dvh - 150px - env(safe-area-inset-top,0px));border-radius:16px}}
 @media(prefers-reduced-motion:reduce){#ai-btn{animation:none}.ai-b,#ai-panel{transition:none;animation:none}}
+.ai-b b{color:#fff;font-weight:600}.ai-b.me b{color:#000}
+.ai-fu{display:flex;flex-wrap:wrap;gap:6px;align-self:flex-start;max-width:92%;animation:aiIn .3s ease}
+.ai-fu button{border:1px solid #3a3320;background:rgba(250,204,21,.06);color:var(--acc);font:500 12px Inter,sans-serif;padding:6px 11px;border-radius:999px;cursor:pointer;transition:.2s}
+.ai-fu button:hover{background:var(--acc);color:#000}
+.ai-card{align-self:flex-start;display:flex;gap:12px;align-items:center;width:86%;padding:10px;border:1px solid #2a2a2a;background:#101010;border-radius:12px;animation:aiIn .3s ease}
+.ai-card img{width:64px;height:64px;object-fit:cover;border-radius:8px;cursor:zoom-in;flex:none;border:1px solid #333}
+.ai-card b{display:block;font:600 13px/1.35 "Space Grotesk",sans-serif;color:var(--ink)}.ai-card small{display:block;color:var(--mute);font-size:11.5px;margin-top:3px;line-height:1.4}
+.ai-card em{display:inline-block;font-style:normal;font-size:10.5px;color:var(--acc);border:1px solid #3a3320;border-radius:999px;padding:1px 8px;margin:5px 4px 0 0}
+.ai-mic{width:46px;border:1px solid #4a4020;border-radius:12px;background:transparent;color:var(--acc);cursor:pointer;display:none;place-items:center;flex:none;transition:.2s}
+.ai-mic.on{display:grid}.ai-mic.rec{background:#ef4444;border-color:#ef4444;color:#fff;animation:aiPulse 1.2s infinite}
+.ai-nudge{position:absolute;right:0;bottom:78px;width:max-content;max-width:min(260px,calc(100vw - 40px));background:#161616;border:1px solid var(--acc);color:var(--ink);font:500 13px/1.45 Inter,sans-serif;padding:11px 14px;border-radius:14px 14px 4px 14px;box-shadow:0 12px 30px rgba(0,0,0,.5);cursor:pointer;animation:aiIn .4s ease}
+.ai-nudge[hidden]{display:none}
 </style>
 </head>
 <body>
@@ -229,7 +241,7 @@ d.innerHTML='<div class="in"><small>PORTFOLIO · EEE</small><b>'+L("Anjim Arif")
 const pc=d.querySelector(".pc"),t0=performance.now(),D=2200;let done=0;const tick=t=>{if(done)return;const p=Math.min(1,(t-t0-200)/D);pc.textContent=Math.round(Math.max(0,p)*100)+"%";p<1&&requestAnimationFrame(tick)};requestAnimationFrame(tick);
 const h=()=>{if(done)return;done=1;d.classList.add("hide");setTimeout(()=>d.remove(),1100)};d.querySelector("button").onclick=h;setTimeout(h,2700)})();
 </script>
-<div id="ai-fab"><button class="tip" type="button" id="ai-tip">Ask Risvy AI</button>
+<div id="ai-fab"><div class="ai-nudge" id="ai-nudge" hidden>👋 Hi! Ask me anything about Risvy</div><button class="tip" type="button" id="ai-tip">Ask Risvy AI</button>
 <button id="ai-btn" type="button" aria-label="Open Ask Risvy AI chat" aria-expanded="false" aria-controls="ai-panel"><span class="dot"></span><svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="8" width="16" height="12" rx="3.5"/><path d="M12 8V5"/><circle cx="12" cy="4" r="1"/><path d="M2 13v3M22 13v3"/><circle cx="9" cy="13" r=".8" fill="currentColor"/><circle cx="15" cy="13" r=".8" fill="currentColor"/><path d="M9.5 16.5c1.5 1 3.5 1 5 0"/></svg></button></div>
 <section id="ai-panel" role="dialog" aria-label="Ask Risvy AI" aria-modal="false" style="padding:0">
 <div class="ai-h"><div class="ai-av"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="8" width="16" height="12" rx="3.5"/><path d="M12 8V5"/><circle cx="12" cy="4" r="1"/><circle cx="9" cy="13" r=".8" fill="currentColor"/><circle cx="15" cy="13" r=".8" fill="currentColor"/><path d="M9.5 16.5c1.5 1 3.5 1 5 0"/></svg></div>
@@ -239,89 +251,133 @@ const h=()=>{if(done)return;done=1;d.classList.add("hide");setTimeout(()=>d.remo
 <div class="ai-st">Your portfolio guide · Conversational bot</div>
 <div class="ai-m" id="ai-m" aria-live="polite"></div>
 <div class="ai-ch" id="ai-ch"></div>
-<form class="ai-f" id="ai-f" autocomplete="off"><input id="ai-i" type="text" placeholder="Ask me anything about Risvy..." aria-label="Your question" maxlength="300"><button type="submit" aria-label="Send"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4z"/></svg></button></form>
+<form class="ai-f" id="ai-f" autocomplete="off"><input id="ai-i" type="text" placeholder="Ask me anything about Risvy..." aria-label="Your question" maxlength="300"><button type="button" class="ai-mic" id="ai-mic" aria-label="Voice input"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></button><button type="submit" aria-label="Send"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4z"/></svg></button></form>
 <div class="ai-ft">Verified portfolio knowledge · No external AI service</div></section>
 
 <script>
-// ===== Ask Risvy AI: runs fully in the browser, answers come from CONFIG above =====
+// ===== Ask Risvy AI v2: runs in the browser, answers come from CONFIG above =====
 (()=>{
-const P=document.getElementById("ai-panel"),M=document.getElementById("ai-m"),F=document.getElementById("ai-f"),I=document.getElementById("ai-i"),B=document.getElementById("ai-btn"),CH=document.getElementById("ai-ch");
-const C=CONFIG,name=(C.glance.find(g=>g[0]==="Name")||[0,"Risvy"])[1],first="Risvy";
-const mail="260001029.eee@gmail.com";
-const link=(h,t)=>`<a href="${h}" target="_blank" rel="noopener">${t}</a>`;
-const go=(h,t)=>`<a href="${h}" data-go>${t}</a>`;
-const g=k=>(C.glance.find(x=>x[0]===k)||[0,""])[1];
+const $$=id=>document.getElementById(id);
+const P=$$("ai-panel"),M=$$("ai-m"),F=$$("ai-f"),I=$$("ai-i"),B=$$("ai-btn"),CH=$$("ai-ch"),FAB=$$("ai-fab"),MIC=$$("ai-mic"),NU=$$("ai-nudge");
+const C=CONFIG,mail="260001029.eee@gmail.com",first="Risvy";
+const g=k=>(C.glance.find(x=>x[0]===k)||[0,""])[1],name=g("Name")||"Risvy";
+const link=(h,t)=>`<a href="${h}" target="_blank" rel="noopener">${t}</a>`,go=(h,t)=>`<a href="${h}" data-go>${t}</a>`;
+
+const hr=new Date().getHours();
+const greet=()=>hr<12?"Good morning":hr<17?"Good afternoon":"Good evening";
+
+/* ---------- answers ---------- */
 const A={
- hello:()=>`Hi there! 👋 I'm Ask Risvy AI. I can tell you about ${first}'s education, skills, projects, activities, certificates, or how to get in touch. What would you like to know?`,
- about:()=>`${name} is a ${g("Degree")} student in ${g("Department")} at ${g("University")} (${g("Current level")}), based in ${g("Location")}. He is curious about electrical engineering, electronics, robotics and emerging technologies, and learns through research and hands-on work.`,
- edu:()=>"Education:\n"+C.edu.map(e=>`• ${e[3]} (${e[0]}): ${e[4]}`).join("\n"),
- skills:()=>"Areas of study and practice:\n"+C.skills.map(s=>`• ${s[0]}: ${s[1]}`).join("\n"),
- projects:()=>"Projects:\n"+C.projects.map(p=>`• ${p.t} (${p.s}): ${p.d}\n  Tech: ${p.tech.join(", ")}`).join("\n")+`\n\nSee it in the ${go("#projects","Projects section")}.`,
- solar:()=>{const p=C.projects[0];return `${p.t} is a ${p.s.toLowerCase()}: ${p.d}`},
- research:()=>"Research & activities:\n"+C.research.map(r=>`• ${r[0]}: ${r[1]}`).join("\n"),
- certs:()=>"Certificates:\n"+C.certs.map(c=>`• ${c.t}\n  ${c.o} · ${c.d}`).join("\n")+`\n\nView them in the ${go("#achievements","Certificates section")}.`,
- contact:()=>`You can reach ${first} here:\n• Email: ${link("mailto:"+mail,mail)}\n• WhatsApp: ${link(C.whatsapp,"Message on WhatsApp")}\n• Location: ${g("Location")}\n\nOr use the ${go("#contact","contact form")}.`,
- social:()=>{const s=[["GitHub",C.github],["Facebook",C.facebook],["Instagram",C.instagram],["X",C.x],["LinkedIn",C.linkedin]].filter(x=>x[1]&&x[1]!=="#");return "Find "+first+" online:\n"+s.map(x=>"• "+link(x[1],x[0])).join("\n")},
- location:()=>`${first} is based in ${g("Location")}, and studies at ${g("University")}.`,
- uni:()=>`${first} is studying ${g("Department")} at ${g("University")}, currently in his ${g("Current level")}.`,
- ieee:()=>"He is active in the IEEE GUB Student Branch and completed their Arduino Hands-On Workshop on July 6, 2026.",
- arduino:()=>"He completed the Arduino Hands-On Workshop (IEEE GUB Student Branch) on practical embedded systems learning, and studies microcontrollers and Arduino-based projects.",
- help:()=>`I can help with:\n• About ${first}\n• Education & university\n• Skills\n• Projects\n• Research & activities\n• Certificates\n• Contact details & social links\n\nTry one of the buttons below or type a question.`,
- thanks:()=>"You're welcome! Anything else you'd like to know?",
- bye:()=>"Thanks for visiting! Feel free to get in touch anytime. 👋",
- who:()=>`I'm Ask Risvy AI, a portfolio assistant. I only use the information published on this site, no external AI service, so my answers stay accurate to what's here.`,
- hire:()=>`${first} is looking for opportunities to learn, collaborate and grow. The best way to start a conversation is by email at ${link("mailto:"+mail,mail)} or through the ${go("#contact","contact form")}.`,
- cv:()=>`There's no downloadable CV on the site yet, but the ${go("#education","Education")}, ${go("#skills","Skills")} and ${go("#achievements","Certificates")} sections cover the same ground. For a CV, email ${link("mailto:"+mail,mail)}.`,
- fallback:()=>`I'm not sure about that one, since I only know what's on this portfolio. Try asking about ${first}'s education, skills, projects, certificates or contact details.`
+hello:()=>`${greet()}! 👋 I'm **Ask Risvy AI**. I can tell you about ${first}'s education, skills, projects, activities, certificates and contact details. What would you like to know?`,
+about:()=>`**${name}** is a ${g("Degree")} student in ${g("Department")} at ${g("University")} (${g("Current level")}), based in ${g("Location")}. He is curious about electrical engineering, electronics, robotics and emerging technologies, and learns through research and hands-on work.`,
+edu:()=>"**Education**\n"+C.edu.map(e=>`• ${e[3]} (${e[0]}): ${e[4]}`).join("\n"),
+uni:()=>`${first} is studying ${g("Department")} at **${g("University")}**, currently in his ${g("Current level")}.`,
+skills:()=>"**Areas of study & practice**\n"+C.skills.map(s=>`• ${s[0]}: ${s[1]}`).join("\n"),
+projects:()=>"**Projects**\n"+C.projects.map(p=>`• ${p.t} (${p.s})\n  ${"Tech"}: ${p.tech.join(", ")}`).join("\n")+"\n\n"+`See it in the ${go("#projects","Projects section")}.`,
+solar:()=>{const p=C.projects[0];return `**${p.t}** — ${p.s}\n${p.d}`},
+research:()=>"**Research & activities**\n"+C.research.map(r=>`• ${r[0]}: ${r[1]}`).join("\n"),
+certs:()=>"**Certificates**\n"+C.certs.map(c=>`• ${c.t}\n  ${c.o} · ${c.d}`).join("\n")+"\n\n"+`View them in the ${go("#achievements","Certificates section")}. Tap a thumbnail to enlarge.`,
+arduino:()=>"He completed the **Arduino Hands-On Workshop** (IEEE GUB Student Branch) on practical embedded systems learning, and studies microcontrollers and Arduino-based projects.",
+ieee:()=>"He is active in the **IEEE GUB Student Branch** and completed their Arduino Hands-On Workshop on July 6, 2026.",
+contact:()=>`**Get in touch with ${first}**\n• Email: ${link("mailto:"+mail,mail)}\n• WhatsApp: ${link(C.whatsapp,"Message on WhatsApp")}\n• Location: ${g("Location")}\n\nOr use the ${go("#contact","contact form")}.`,
+social:()=>{const s=[["GitHub",C.github],["Facebook",C.facebook],["Instagram",C.instagram],["X",C.x],["LinkedIn",C.linkedin]].filter(x=>x[1]&&x[1]!=="#");return "**Find him online**\n"+s.map(x=>"• "+link(x[1],x[0])).join("\n")},
+location:()=>`${first} is based in **${g("Location")}** and studies at ${g("University")}.`,
+hire:()=>`${first} is looking for opportunities to learn, collaborate and grow. The best way to start is by email at ${link("mailto:"+mail,mail)} or through the ${go("#contact","contact form")}.`,
+cv:()=>`There's no downloadable CV on the site yet, but ${go("#education","Education")}, ${go("#skills","Skills")} and ${go("#achievements","Certificates")} cover the same ground. For a CV, email ${link("mailto:"+mail,mail)}.`,
+help:()=>`I can help with:\n• About ${first}\n• Education & university\n• Skills\n• Projects\n• Research & activities\n• Certificates\n• Contact & social links`,
+who:()=>"I'm **Ask Risvy AI**, a portfolio assistant. I only use the information published on this site, with no external AI service, so my answers stay accurate to what's here.",
+thanks:()=>"You're welcome! 😊 Anything else you'd like to know?",
+bye:()=>"Thanks for visiting! Feel free to get in touch anytime. 👋",
+fallback:()=>`Hmm, I'm not sure about that, since I only know what's on this portfolio. Try asking about ${first}'s education, skills, projects, certificates or contact details.`
 };
-const INT=[
- ["hello",/\b(hi|hello|hey|hola|salam|assalamu|greetings|good (morning|afternoon|evening))\b|say hello/],
- ["thanks",/\b(thanks|thank you|thx|great|awesome|nice|cool)\b/],
- ["bye",/\b(bye|goodbye|see you|cya)\b/],
- ["help",/\b(help|explore|what can you|what do you|options|menu)\b/],
- ["who",/\b(who are you|your name|are you (a )?(bot|ai|real|human)|what are you)\b/],
- ["solar",/\b(solar|space|rectenna|poster|orbit|microwave|laser)\b/],
- ["arduino",/\b(arduino|embedded|microcontroller|workshop)\b/],
- ["ieee",/\bieee\b/],
- ["cv",/\b(cv|resume|r[eé]sum[eé])\b/],
- ["hire",/\b(hire|hiring|job|intern|internship|opportunit|collaborat|work with|available)\b/],
- ["contact",/\b(contact|email|e-mail|mail|phone|number|whatsapp|reach|message|get in touch|talk to)\b/],
- ["social",/\b(github|facebook|instagram|linkedin|twitter|social|x\.com|profile|follow)\b/],
- ["certs",/\b(certificat|achievement|award|credential|milestone)/],
- ["research",/\b(research|activit|bootcamp|genesis|gurpc|participat)/],
- ["projects",/\b(project|portfolio work|built|build|develop|made|work)\b/],
- ["skills",/\b(skill|know|good at|expert|tools?|technolog|stud(y|ies)|learn|proficien|abilit)/],
- ["edu",/\b(educat|school|college|hsc|ssc|degree|academic|batch|semester|qualif|graduat)/],
- ["uni",/\b(universit|green|gub|department|eee|major)\b/],
- ["location",/\b(where|location|live|city|dhaka|bangladesh|country|nationalit|from)\b/],
- ["about",/\b(about|who is|introduc|tell me|bio|himself|yourself|risvy|anjim|arif|student)\b/]
-];
-const reply=q=>{const t=q.toLowerCase().trim();for(const [k,re] of INT)if(re.test(t))return A[k]();return A.fallback()};
+/* ---------- intent keywords  ---------- */
+const K={
+hello:[2,"hi","hello","hey","salam","assalamu","say hello"],
+thanks:[2,"thanks","thank","thx"],
+bye:[2,"bye","goodbye","see you"],
+help:[1.6,"help","explore","options","menu","what can you"],
+who:[2.4,"who are you","your name","are you a bot","are you ai"],
+about:[1.4,"about","who is","bio","introduce","tell me","risvy","anjim","arif"],
+edu:[1.7,"education","school","college","hsc","ssc","degree","semester","batch","academic","qualification"],
+uni:[1.7,"university","green","gub","department","eee","major"],
+skills:[1.7,"skill","skills","tools","technology","expert","ability","proficiency","know"],
+projects:[1.7,"project","projects","built","build"],
+solar:[2.4,"solar","space","rectenna","poster","orbit","microwave"],
+research:[1.7,"research","activity","activities","bootcamp","genesis","gurpc","participation"],
+certs:[2,"certificate","certificates","achievement","achievements","award","credential"],
+arduino:[2.4,"arduino","embedded","workshop","microcontroller"],
+ieee:[2.4,"ieee"],
+contact:[2,"contact","email","mail","phone","number","whatsapp","reach","message","get in touch"],
+social:[2,"github","facebook","instagram","linkedin","twitter","social","profile"],
+location:[1.8,"where","location","live","city","dhaka","address","country"],
+hire:[2.2,"hire","hiring","job","intern","internship","collaborate","opportunity","available"],
+cv:[2.4,"cv","resume","résumé"],
+more:[2,"more","details","detail","elaborate","tell more"]
+};
+const lev=(a,b)=>{if(Math.abs(a.length-b.length)>1)return 9;const m=[...Array(a.length+1)].map((_,i)=>[i,...Array(b.length).fill(0)]);for(let j=0;j<=b.length;j++)m[0][j]=j;for(let i=1;i<=a.length;i++)for(let j=1;j<=b.length;j++)m[i][j]=Math.min(m[i-1][j]+1,m[i][j-1]+1,m[i-1][j-1]+(a[i-1]===b[j-1]?0:1));return m[a.length][b.length]};
+const detect=q=>{const t=q.toLowerCase().replace(/[?!.,;:()"']/g," ").trim(),tk=t.split(/\s+/).filter(Boolean);let best=null,bs=0;
+ for(const k in K){const [w,...ws]=K[k];let s=0;for(const x of ws){if(x.includes(" ")){if(t.includes(x))s+=w*1.4}else if(/[^\x00-\x7f]/.test(x)){if(t.includes(x))s+=w}else for(const y of tk){if(y===x)s+=w;else if(x.length>=5&&y.length>=5&&lev(x,y)<=1)s+=w*.8}}
+  if(s>bs){bs=s;best=k}}
+ return bs>=1?best:null};
+const FU={hello:["help","about","projects"],about:["edu","skills","projects"],edu:["skills","certs","more"],uni:["research","skills","projects"],skills:["projects","certs","contact"],projects:["more","certs","contact"],solar:["research","certs","contact"],research:["certs","arduino","contact"],certs:["projects","contact","social"],arduino:["ieee","certs","projects"],ieee:["research","certs","contact"],contact:["social","hire","projects"],social:["contact","about","projects"],location:["about","contact","edu"],hire:["contact","cv","projects"],cv:["contact","edu","skills"],help:["about","projects","contact"],thanks:["projects","contact","skills"],more:["contact","skills","certs"],fallback:["help","about","projects"],who:["help","about","contact"],bye:["about","projects","contact"]};
+const LB={help:["What can you do?"],about:["About Risvy"],projects:["Projects"],edu:["Education"],skills:["Skills"],certs:["Certificates"],contact:["Contact"],social:["Social links"],hire:["Work with him"],more:["More details"],research:["Research"],arduino:["Arduino"],ieee:["IEEE GUB","IEEE GUB"],cv:["CV / Resume"]};
+const MORE={projects:"solar",solar:"research",edu:"uni",about:"skills",skills:"projects",certs:"research",contact:"social",research:"certs",hello:"help"};
+let last="";
+const esc2=s=>s.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const fmt=h=>{const keep=[];h=h.replace(/<a [^>]*>.*?<\/a>/g,m=>{keep.push(m);return"\u0000"+(keep.length-1)+"\u0000"});h=esc2(h).replace(/\*\*(.+?)\*\*/g,"<b>$1</b>");return h.replace(/\u0000(\d+)\u0000/g,(_,i)=>keep[i])};
+
+/* ---------- UI ---------- */
 const scroll=()=>{M.scrollTop=M.scrollHeight};
 const add=(cls,html)=>{const d=document.createElement("div");d.className="ai-b "+cls;d.innerHTML=html;M.appendChild(d);scroll();return d};
-const SUG=["What can you help me explore?","Which projects has Risvy worked on?","What certificates does he have?"];
-const CHIPS=["About Risvy","Say Hello","Projects","Skills","Education","Contact"];
-const ASK={"About Risvy":"About Risvy","Say Hello":"Say hello","Projects":"Projects","Skills":"Skills","Education":"Education","Contact":"Contact"};
-let busy=false;
-const ask=q=>{q=q.trim();if(!q||busy)return;busy=true;add("me",esc(q));const ty=document.createElement("div");ty.className="ai-b bot ai-ty";ty.innerHTML="<span></span><span></span><span></span>";M.appendChild(ty);scroll();
- setTimeout(()=>{ty.remove();add("bot",A_html(reply(q)));busy=false},matchMedia("(prefers-reduced-motion:reduce)").matches?0:520)};
-// replies are built from trusted CONFIG text; escape the plain text while keeping our own link markup
-const A_html=h=>{const keep=[];h=h.replace(/<a [^>]*>.*?<\/a>/g,m=>{keep.push(m);return"\u0000"+(keep.length-1)+"\u0000"});h=esc(h);return h.replace(/\u0000(\d+)\u0000/g,(_,i)=>keep[i])};
-const start=()=>{M.innerHTML="";add("bot",A_html(`Hello! I'm Ask Risvy AI, your personal guide to ${first}'s portfolio. Say hi, explore a project, ask a follow-up question, or find anything on the site. How can I help?`));
- const s=document.createElement("div");s.className="ai-sg";s.innerHTML="<small>Start with a question</small>"+SUG.map(x=>`<button type="button" class="ai-q">${esc(x)}<span>↗</span></button>`).join("");M.appendChild(s)};
-CH.innerHTML=CHIPS.map(x=>`<button type="button">${esc(x)}</button>`).join("");
-const open=o=>{if(o){P.classList.add("open");requestAnimationFrame(()=>P.classList.add("show"));setTimeout(()=>I.focus({preventScroll:true}),250)}else{P.classList.remove("show");setTimeout(()=>P.classList.remove("open"),250)}B.setAttribute("aria-expanded",o);document.getElementById("ai-fab").style.display=o&&innerWidth<=560?"none":"flex"};
-const isOpen=()=>P.classList.contains("open");
-B.onclick=()=>open(!isOpen());document.getElementById("ai-tip").onclick=()=>open(true);document.getElementById("ai-x").onclick=()=>open(false);
-document.getElementById("ai-reset").onclick=()=>{busy=false;start()};
+const cardsFor=k=>{const mk=(img,t,sub,tags)=>`<div class="ai-card"><img src="${esc2(img)}" alt="${esc2(t)}" data-zoom><div><b>${esc2(t)}</b><small>${esc2(sub)}</small>${(tags||[]).map(x=>`<em>${esc2(x)}</em>`).join("")}</div></div>`;
+ if(k==="projects"||k==="solar")return C.projects.map(p=>mk(p.img,p.t,p.s,p.tech));
+ if(k==="certs")return C.certs.map(c=>mk(c.img,c.t.split(":")[0]+": "+(c.t.split(":")[1]||"").split("—")[0].trim(),c.o+" · "+c.d));return[]};
+const followUps=k=>{M.querySelectorAll(".ai-fu").forEach(e=>e.remove());const d=document.createElement("div");d.className="ai-fu";d.innerHTML=(FU[k]||FU.fallback).map(x=>`<button type="button">${esc2(LB[x][0])}</button>`).join("");M.appendChild(d);scroll()};
+const typing=()=>{const t=document.createElement("div");t.className="ai-b bot ai-ty";t.innerHTML="<span></span><span></span><span></span>";M.appendChild(t);scroll();return t};
+const reduce=matchMedia("(prefers-reduced-motion:reduce)").matches;
+let busy=false,hist=[];
+const save=()=>{try{sessionStorage.setItem("aiq",JSON.stringify(hist.slice(-20)))}catch(_){}};
+async function ask(q,instant){q=q.trim();if(!q||busy)return;busy=true;
+ M.querySelectorAll(".ai-fu").forEach(e=>e.remove());add("me",esc2(q));if(!instant){hist.push(q);save()}
+ let k=detect(q);if(k==="more")k=MORE[last]||"help";
+ const ty=instant?null:typing();const t0=Date.now();
+ const ans=null;
+ const wait=instant||reduce?0:Math.max(0,450-(Date.now()-t0));
+ await new Promise(r=>setTimeout(r,wait));ty&&ty.remove();
+ if(ans){add("bot",fmt(ans));followUps("fallback")}
+ else{const key=k||"fallback";add("bot",fmt(A[key]()));cardsFor(key).forEach(h=>{const w=document.createElement("div");w.innerHTML=h;M.appendChild(w.firstChild)});followUps(key);if(k)last=k}
+ busy=false;scroll()}
+const start=()=>{M.innerHTML="";last="";hist=[];save();add("bot",fmt(`${greet()}! I'm **Ask Risvy AI**, your personal guide to ${first}'s portfolio. Ask about his projects, skills, certificates, or how to contact him.`));
+ const s=document.createElement("div");s.className="ai-sg";s.innerHTML="<small>Start with a question</small>"+["What can you help me explore?","Which projects has Risvy worked on?","What certificates does he have?"].map(x=>`<button type="button" class="ai-q">${esc2(x)}<span>↗</span></button>`).join("");M.appendChild(s)};
+CH.innerHTML=["About Risvy","Say Hello","Projects","Skills","Education","Contact"].map(x=>`<button type="button">${esc2(x)}</button>`).join("");
+
+/* ---------- open / close ---------- */
+const isOpen=()=>P.classList.contains("open");let nudged=false;
+const open=o=>{NU.hidden=true;if(o){B.querySelector(".dot").style.display="none";P.classList.add("open");requestAnimationFrame(()=>P.classList.add("show"));if(innerWidth>560)setTimeout(()=>I.focus({preventScroll:true}),250)}else{P.classList.remove("show");setTimeout(()=>P.classList.remove("open"),250)}B.setAttribute("aria-expanded",o);FAB.style.display=o&&innerWidth<=560?"none":"flex"};
+B.onclick=()=>open(!isOpen());$$("ai-tip").onclick=()=>open(true);NU.onclick=()=>open(true);$$("ai-x").onclick=()=>open(false);$$("ai-reset").onclick=start;
 addEventListener("keydown",e=>{if(e.key==="Escape"&&isOpen())open(false)});
 F.onsubmit=e=>{e.preventDefault();const v=I.value;I.value="";ask(v)};
-M.addEventListener("click",e=>{const q=e.target.closest(".ai-q");if(q){ask(q.firstChild.textContent);q.closest(".ai-sg").remove();return}const a=e.target.closest("a[data-go]");if(a){if(innerWidth<=860)open(false)}});
-CH.addEventListener("click",e=>{const b=e.target.closest("button");if(b)ask(ASK[b.textContent]||b.textContent)});
-// keep the launcher hidden behind the intro splash
-const intro=()=>document.getElementById("intro");document.getElementById("ai-fab").style.visibility=intro()?"hidden":"visible";
-if(intro())new MutationObserver((_,o)=>{if(!intro()){document.getElementById("ai-fab").style.visibility="visible";o.disconnect()}}).observe(document.body,{childList:true});
+M.addEventListener("click",e=>{
+ const q=e.target.closest(".ai-q");if(q){ask(q.firstChild.textContent);q.closest(".ai-sg").remove();return}
+ const f=e.target.closest(".ai-fu button");if(f){ask(f.textContent);return}
+ const z=e.target.closest("img[data-zoom]");if(z){const lb=$$("lb");lb.innerHTML='<img alt="" src="'+z.src+'">';lb.style.display="grid";return}
+ if(e.target.closest("a[data-go]")&&innerWidth<=860)open(false)});
+CH.addEventListener("click",e=>{const b=e.target.closest("button");if(b)ask(b.textContent)});
+
+/* ---------- voice input ---------- */
+const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+if(SR){MIC.classList.add("on");let rec=null;MIC.onclick=()=>{if(rec){rec.stop();return}rec=new SR();rec.lang="en-US";rec.interimResults=false;
+ rec.onstart=()=>MIC.classList.add("rec");rec.onresult=e=>{const v=e.results[0][0].transcript;I.value="";ask(v)};
+ rec.onend=rec.onerror=()=>{MIC.classList.remove("rec");rec=null};try{rec.start()}catch(_){rec=null}}}
+
+/* ---------- launcher polish ---------- */
+const intro=()=>$$("intro");
+const reveal=()=>{FAB.style.visibility="visible";setTimeout(()=>{let seen=false;try{seen=sessionStorage.getItem("ain")}catch(_){}if(!isOpen()&&!seen){NU.hidden=false;try{sessionStorage.setItem("ain","1")}catch(_){}setTimeout(()=>NU.hidden=true,9000)}},4000)};
+if(intro()){FAB.style.visibility="hidden";new MutationObserver((_,o)=>{if(!intro()){o.disconnect();reveal()}}).observe(document.body,{childList:true})}else reveal();
+
+let old=[];try{old=JSON.parse(sessionStorage.getItem("aiq")||"[]")}catch(_){}
 start();
+if(old.length)(async()=>{for(const q of old)await ask(q,true);hist=old;save();const s=M.querySelector(".ai-sg");s&&s.remove()})();
 })();
 </script>
 </body>
