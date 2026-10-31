@@ -13,7 +13,7 @@
 <meta property="og:description" content="Electrical &amp; Electronic Engineering student at Green University of Bangladesh. Projects, research activities and certificates.">
 <meta property="og:url" content="https://risvy.netlify.app/">
 <meta name="twitter:card" content="summary">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@500;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@500;700&amp;family=Bebas+Neue&amp;display=swap" rel="stylesheet">
 <style>
 :root{--bg:#0a0a0a;--bg2:#111;--ink:#f4f4f0;--mute:#a1a1a1;--acc:#facc15;--line:#262626;color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 *{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:80px}
@@ -89,7 +89,89 @@ footer{margin-top:110px;border-top:1px solid var(--line);padding:50px 0 40px;bac
 #nf{display:none;min-height:100vh;place-items:center;text-align:center}#nf .big{font-size:110px}
 body.is404 main,body.is404 footer,body.is404 header{display:none}body.is404 #nf{display:grid}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}.rv{opacity:1!important;transform:none!important}}
-/* ===== Ask Risvy AI chatbot ===== */
+#intro.g b{font-size:clamp(30px,7.5vw,68px)}
+#intro.g em{margin-top:14px;opacity:0;animation:fi .7s .9s forwards}
+#intro .ckt{display:block;width:min(420px,88vw);height:auto;margin:22px auto 0;color:#cfcfc8;overflow:visible;opacity:0;animation:fi .7s 1.1s forwards}
+#intro .ckt .blade{transition:transform .35s cubic-bezier(.3,1.4,.5,1)}
+#intro .ckt .flow{opacity:0;stroke-dasharray:2 11;transition:opacity .3s}
+#intro .ckt .rays{opacity:0;transition:opacity .3s}
+#intro .ckt polygon,#intro .ckt path{transition:fill .3s}
+#intro .ckt .ping{transform-origin:140px 40px;animation:ping 1.6s infinite}
+#intro .ckt #sw:focus{outline:none}#intro .ckt #sw:focus-visible .ping{stroke-width:3}
+#intro.on .ckt .flow{opacity:1;animation:flow .6s linear infinite}
+#intro.on .ckt .rays{opacity:1}#intro.on .ckt .led{fill:var(--acc);stroke:var(--acc)}
+#intro.on .ckt .ping{animation:none;opacity:0}
+#intro.on .ckt{filter:drop-shadow(0 0 14px rgba(250,204,21,.45))}
+#intro .msg{margin:14px 0 0;font:500 12px "Space Grotesk",sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--mute);min-height:1.4em}
+#intro.on .msg{color:var(--acc)}
+#intro.g button{margin-top:18px}
+@keyframes ping{0%{opacity:.9;transform:scale(.6)}100%{opacity:0;transform:scale(1.3)}}
+@keyframes flow{to{stroke-dashoffset:-13}}
+@media(prefers-reduced-motion:reduce){#intro .ckt .ping,#intro.on .ckt .flow{animation:none}#intro .ckt .blade{transition:none}}
+#cvm{position:fixed;inset:0;z-index:95;display:none;place-items:center;padding:16px;background:rgba(0,0,0,.82);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+#cvm.open{display:grid}
+#cvm .bx{position:relative;width:min(460px,100%);max-height:calc(100dvh - 32px);overflow:auto;background:var(--bg2);border:1px solid var(--line);padding:28px 24px 24px;animation:fi .25s forwards;opacity:0}
+#cvm h3{margin:0 0 6px;font:700 24px "Space Grotesk",sans-serif;color:var(--ink)}
+#cvm p.sub{margin:0 0 18px;color:var(--mute);font-size:14px;line-height:1.55}
+#cvm form{display:grid;gap:14px}
+#cvm .x{position:absolute;top:10px;right:10px;width:36px;height:36px;border:1px solid var(--line);background:transparent;color:var(--mute);cursor:pointer;font-size:18px;line-height:1}
+#cvm .x:hover{border-color:var(--acc);color:var(--acc)}
+#cvm .hp{position:absolute;left:-9999px;opacity:0;height:0;width:0}
+#cvm .st{margin:0;font-size:14px;color:var(--mute);min-height:1.3em}
+#cvm .st.ok{color:var(--acc)}
+/* ===== bold hero ===== */
+.logo{font:400 30px/1 "Bebas Neue","Oswald",Impact,"Haettenschweiler","Arial Narrow Bold","Arial Narrow",sans-serif;letter-spacing:.02em}
+.btn.pill{white-space:nowrap;border-radius:999px;background:#fff;border-color:#fff;color:#000;padding:10px 20px;font-size:12px}.btn.pill:hover{background:var(--acc);border-color:var(--acc)}
+.hero{position:relative;overflow:hidden;padding:100px 0 60px;background:radial-gradient(900px 600px at 80% 45%,rgba(250,204,21,.07),transparent 60%),var(--bg)}
+.hero .w{position:static;min-width:0;width:100%}.hg{display:block}.hg>div{position:relative;z-index:2}
+.hero .lab:before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--acc);margin-right:10px;vertical-align:1px}
+.hero h1{font:400 clamp(88px,12.5vw,190px)/.84 "Bebas Neue","Oswald",Impact,"Haettenschweiler","Arial Narrow Bold","Arial Narrow",sans-serif;letter-spacing:.005em;margin:20px 0 26px;text-shadow:0 2px 30px rgba(0,0,0,.6)}
+.hero h1 span,.hero h1 span+span+span{color:var(--ink)}.hero h1 span.y{color:var(--acc)}.hero h1 span{white-space:nowrap}
+.hero .role{color:var(--acc);font-weight:700;font-size:clamp(18px,2.1vw,26px)}
+.hero .lead{max-width:520px;color:#c9c9c2}
+.btn.t{background:transparent;border-color:transparent;color:var(--ink);padding-inline:12px}.btn.t:hover{color:var(--acc)}
+.hero .scroll{margin-top:40px}
+.hero .pt{position:absolute;right:0;top:0;bottom:0;width:min(56%,760px);max-width:none;margin:0;z-index:1;-webkit-mask-image:linear-gradient(to right,transparent 0,#000 38%),linear-gradient(to top,transparent 0,#000 22%);-webkit-mask-composite:source-in;mask-image:linear-gradient(to right,transparent 0,#000 38%),linear-gradient(to top,transparent 0,#000 22%);mask-composite:intersect}
+.hero .pt:before{display:none}
+.hero .pt img{position:absolute;inset:0;width:100%;height:100%;aspect-ratio:auto;object-fit:cover;object-position:62% 18%;filter:grayscale(1) contrast(1.2) brightness(.62)}
+.hero .tag{position:absolute;top:96px;right:24px;z-index:2;font:500 11px "Space Grotesk",sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--mute)}
+@media(max-width:480px){.logo{font-size:24px}nav{gap:10px}}
+@media(max-width:860px){.hero .pt{order:0;max-width:none;width:78%;opacity:.5;-webkit-mask-image:linear-gradient(to right,transparent 0,#000 45%),linear-gradient(to top,transparent 0,#000 30%)}
+.hero{padding-top:96px}.hero h1{font-size:clamp(64px,21vw,190px)}.btn.pill{padding:9px 14px;font-size:11px}.hero .tag{display:none}.hero .lead{max-width:none;text-shadow:0 1px 12px #000}}
+/* ===== motion ===== */
+.mq{position:relative;background:var(--bg)}
+.mq:before,.mq:after{content:"";position:absolute;top:0;bottom:0;width:90px;z-index:2;pointer-events:none}
+.mq:before{left:0;background:linear-gradient(90deg,var(--bg),transparent)}.mq:after{right:0;background:linear-gradient(270deg,var(--bg),transparent)}
+.mq div{font:400 clamp(30px,5vw,54px)/1 "Bebas Neue","Oswald",Impact,"Arial Narrow",sans-serif;letter-spacing:.02em;animation-duration:40s}
+.mq:hover div{animation-play-state:paused}
+.mq span{margin:0 22px}.mq span:nth-child(4n+3){color:transparent;-webkit-text-stroke:1px #6b6b66}
+.mq b{font-size:.45em;vertical-align:middle}
+.st{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-bottom:1px solid var(--line)}
+.st>div{padding:34px 20px 30px;border-left:1px solid var(--line)}.st>div:first-child{border-left:0;padding-left:0}
+.st b{display:block;font:400 clamp(54px,8vw,104px)/.9 "Bebas Neue","Oswald",Impact,"Arial Narrow",sans-serif;color:var(--ink);font-variant-numeric:tabular-nums}
+.st b i{font-style:normal;color:var(--acc)}
+.st small{display:block;margin-top:10px;font:500 12px "Space Grotesk",sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--mute)}
+@media(max-width:700px){.st{grid-template-columns:repeat(2,1fr)}.st>div:nth-child(3){border-left:0;padding-left:0}.st>div:nth-child(n+3){border-top:1px solid var(--line)}}
+.rows>div,#skg>div,.cc,.proj{background-image:radial-gradient(320px circle at var(--mx,-999px) var(--my,-999px),rgba(250,204,21,.09),transparent 60%)}
+.hero .pt img{transform:translate3d(0,var(--py,0px),0) scale(1.06)}
+@keyframes rise{from{opacity:0;transform:translateY(26px)}}
+@keyframes nm{from{opacity:0;transform:translateY(55%) skewY(4deg);filter:blur(10px)}}
+@keyframes ph{from{opacity:0;transform:scale(1.08) translateX(40px)}}
+@media(prefers-reduced-motion:no-preference){
+html:not(.go) :is(.hero .lab,.hero h1 span,.hero .role,.hero .lead,.hero .row,.hero .scroll,.hero .tag,.hero .pt){opacity:0}
+html.go .hero .lab{animation:rise .9s .05s cubic-bezier(.2,.8,.2,1) backwards}
+html.go .hero h1 span:nth-child(1){animation:nm 1.1s .15s cubic-bezier(.2,.8,.2,1) backwards}
+html.go .hero h1 span:nth-child(2){animation:nm 1.1s .3s cubic-bezier(.2,.8,.2,1) backwards}
+html.go .hero h1 span:nth-child(3){animation:nm 1.1s .45s cubic-bezier(.2,.8,.2,1) backwards}
+html.go .hero .role{animation:rise .9s .75s cubic-bezier(.2,.8,.2,1) backwards}
+html.go .hero .lead{animation:rise .9s .9s cubic-bezier(.2,.8,.2,1) backwards}
+html.go .hero .row{animation:rise .9s 1.05s cubic-bezier(.2,.8,.2,1) backwards}
+html.go .hero .scroll,html.go .hero .tag{animation:rise .9s 1.3s cubic-bezier(.2,.8,.2,1) backwards}
+html.go .hero .pt{animation:ph 1.6s .15s cubic-bezier(.2,.8,.2,1) backwards}
+.rv.in>*{animation:rise .85s cubic-bezier(.2,.8,.2,1) backwards;animation-delay:calc(var(--k,0)*90ms)}
+}
+@media(prefers-reduced-motion:reduce){.mt{animation:none}}
+/* ===== Portfolio Assistant chatbot ===== */
 #ai-fab{position:fixed;right:max(18px,env(safe-area-inset-right,0px));bottom:calc(76px + env(safe-area-inset-bottom,0px));z-index:60;display:flex;align-items:center;gap:12px;font-family:"Space Grotesk",Inter,sans-serif}
 #ai-fab .tip{background:rgba(10,10,10,.88);border:1px solid var(--line);color:var(--ink);font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:12px 16px;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);cursor:pointer;transition:.25s}
 #ai-fab .tip:hover{border-color:var(--acc);color:var(--acc)}
@@ -142,24 +224,69 @@ body.is404 main,body.is404 footer,body.is404 header{display:none}body.is404 #nf{
 .ai-mic.on{display:grid}.ai-mic.rec{background:#ef4444;border-color:#ef4444;color:#fff;animation:aiPulse 1.2s infinite}
 .ai-nudge{position:absolute;right:0;bottom:78px;width:max-content;max-width:min(260px,calc(100vw - 40px));background:#161616;border:1px solid var(--acc);color:var(--ink);font:500 13px/1.45 Inter,sans-serif;padding:11px 14px;border-radius:14px 14px 4px 14px;box-shadow:0 12px 30px rgba(0,0,0,.5);cursor:pointer;animation:aiIn .4s ease}
 .ai-nudge[hidden]{display:none}
+.rows a.ext{display:inline-block;margin-top:14px;color:var(--acc);font:600 13px "Space Grotesk",sans-serif;border-bottom:1px solid currentColor;padding-bottom:2px}.rows a.ext:hover{opacity:.8}
+
+/* ===== Contact section: balanced two-column layout ===== */
+#contact > .w{
+  max-width:1400px;
+  padding-left:28px;
+  padding-right:28px;
+}
+#contact .cg{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:32px;
+  align-items:stretch;
+}
+#contact .cg > .card{
+  min-width:0;
+  min-height:500px;
+  height:100%;
+  display:flex;
+  flex-direction:column;
+}
+#contact .cg > .card:first-child .soc{margin-top:22px}
+#contact #cf{
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+}
+#contact #cf .f2{width:100%}
+#contact #cf textarea{
+  min-height:140px;
+  resize:vertical;
+}
+#contact #cf button{margin-top:auto}
+#contact .cr .v{overflow-wrap:anywhere}
+@media(max-width:860px){
+  #contact .cg{grid-template-columns:1fr;align-items:stretch}
+  #contact .cg > .card{min-height:0;height:auto}
+  #contact #cf button{margin-top:0}
+}
+@media(max-width:560px){
+  #contact .cg{gap:18px}
+  #contact .cg > .card{padding:24px 18px}
+  #contact #cf .f2{grid-template-columns:1fr}
+}
+
+
 </style>
 </head>
 <body>
 <header><div class="w"><nav><a class="logo" href="#home">M.A.<i>/</i>RISVY</a>
 <div class="links"><a href="#home">Home</a><a href="#about">About</a><a href="#education">Education</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#research">Activities</a><a href="#achievements">Certificates</a></div>
-<a class="btn" href="#contact" style="padding:10px 18px">Contact</a><button class="mb" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path class="o" d="M4 7h16M4 12h16M4 17h16"/><path class="x" d="M6 6l12 12M18 6L6 18" style="display:none"/></svg></button></nav></div></header>
+<a class="btn pill" href="#contact">Hire Me <span aria-hidden="true">↗</span></a><button class="mb" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path class="o" d="M4 7h16M4 12h16M4 17h16"/><path class="x" d="M6 6l12 12M18 6L6 18" style="display:none"/></svg></button></nav></div></header>
 
 <main>
 <section class="hero" id="home"><div class="w"><div class="hg"><div>
 <span class="lab">Portfolio · GUB EEE / Bangladesh</span>
-<h1><span>MD Anjim</span><span>Arif Risvy</span></h1>
+<h1><span>MD Anjim</span><span class="y">Arif</span><span>Risvy</span></h1>
 <p class="role">Electrical &amp; Electronic Engineering Student</p>
 <p class="lead">Exploring engineering, technology, and innovation to develop practical solutions for real-world challenges.</p>
-<div class="row"><a class="btn" href="#projects">View My Projects</a><a class="btn o" href="#contact">Contact Me</a><div class="sg"><a class="ic" id="li" href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a><a class="ic" id="gh" href="#" aria-label="GitHub" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg></a><a class="ic" id="fb" href="#" aria-label="Facebook" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a><a class="ic" id="ig" href="#" aria-label="Instagram" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a><a class="ic" id="wa" href="#" aria-label="WhatsApp" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/><path transform="translate(6.6 6.6) scale(.45)" stroke-width="4" d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></a><a class="ic" id="x" href="#" target="_blank" rel="noopener" aria-label="X"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a></div></div>
+<div class="row"><a class="btn" href="#projects">View Projects <span aria-hidden="true">↗</span></a><button class="btn o" id="cv" type="button">Request CV <span aria-hidden="true">✉</span></button><a class="btn t" href="#contact">Contact Me <span aria-hidden="true">↗</span></a><div class="sg"><a class="ic" id="li" href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a><a class="ic" id="gh" href="#" aria-label="GitHub" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg></a><a class="ic" id="fb" href="#" aria-label="Facebook" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a><a class="ic" id="ig" href="#" aria-label="Instagram" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a><a class="ic" id="wa" href="#" aria-label="WhatsApp" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/><path transform="translate(6.6 6.6) scale(.45)" stroke-width="4" d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></a><a class="ic" id="x" href="#" target="_blank" rel="noopener" aria-label="X"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a></div></div>
 <div class="scroll">Scroll to explore ↓</div></div>
-<div class="pt"><img id="pimg" alt="Portrait of MD Anjim Arif Risvy"></div></div></div></section>
-
-<div class="mq"><div id="mq"></div></div>
+<div class="tag" aria-hidden="true">GUB · EEE / Bangladesh</div><div class="pt"><img id="pimg" alt="Portrait of MD Anjim Arif Risvy"></div></div></div></section>
 
 <section id="about"><div class="w two"><div class="rv"><span class="lab">// About</span><h2 class="big">More than<br>a <em>student.</em></h2>
 <p style="color:var(--mute)">I am an undergraduate Electrical &amp; Electronic Engineering student at Green University of Bangladesh, curious about electrical engineering, electronics, robotics, and emerging technologies.</p>
@@ -205,20 +332,19 @@ const PHOTO="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBAUEBAYF
 const CONFIG={
  formKey:"da1a7ab3-dbe3-41d9-9cbe-3d03e76a8304",linkedin:"#",github:"https://github.com/anjimarif84-coder",facebook:"https://www.facebook.com/anjim.arif.50",instagram:"https://www.instagram.com/anjim_arif_17/",whatsapp:"https://wa.me/8801921710886",x:"https://x.com/risvy29",
  glance:[["Name","MD Anjim Arif Risvy"],["Nationality","Bangladeshi"],["Degree","Bachelor of Science"],["Department","Electrical & Electronic Engineering"],["University","Green University of Bangladesh"],["Current level","2nd Semester · Batch 260"],["Location","Dhaka, Bangladesh"]],
- edu:[["2024 — Present","Currently studying","University","Green University of Bangladesh","B.Sc. in Electrical & Electronic Engineering · 2nd Semester · Batch 260","https://green.edu.bd/students"],["2024","Completed","Higher Secondary","Kushtia Islamia College","Higher Secondary Certificate (HSC)","https://kic.edu.bd/"],["2022","Completed","Secondary","Kushtia Zilla School","Secondary School Certificate (SSC)","https://kushtiazillaschool.edu.bd/"]],
+ edu:[["2026 — Present","Currently studying","University","Green University of Bangladesh","B.Sc. in Electrical & Electronic Engineering · 2nd Semester · Batch 260","https://green.edu.bd/students"],["2024","Completed","Higher Secondary","Kushtia Islamia College","Higher Secondary Certificate (HSC)","https://kic.edu.bd/"],["2022","Completed","Secondary","Kushtia Zilla School","Secondary School Certificate (SSC)","https://kushtiazillaschool.edu.bd/"]],
  skills:[["Electrical Engineering","Circuit fundamentals and power systems basics"],["Electronics & Circuit Analysis","Analog and digital electronics, circuit analysis"],["Robotics & Embedded Systems","Microcontrollers and Arduino-based practical learning"],["Renewable Energy","Solar and sustainable power concepts"],["Research & Technical Documentation","Research methodology, technical writing"],["Software & Productivity Tools","Office and design tools"]],
  projects:[{t:"Space-Based Solar Power",d:"Team-3 poster project at Green University of Bangladesh on collecting solar energy in orbit with large PV arrays and beaming it to Earth as microwave or laser energy for a ground rectenna.",tech:["Solar Energy","Wireless Power","Rectenna"],s:"Team Poster Project",img:POSTER}],
- research:[["Research Genesis Bootcamp","Participated in the foundational bootcamp session on research methodology — July 6, 2026."],["Arduino Hands-On Workshop","Completed the workshop on practical embedded systems learning — July 6, 2026."],["IEEE GUB Student Branch","Active in IEEE GUB Student Branch activities."],["Renewable Energy","Explored space-based solar power through a team poster project."]],
+ research:[["Arduino Hands-On Workshop","Completed the workshop on practical embedded systems learning, organised by IEEE GUB Student Branch with the Green Robotics Society — July 6, 2026.","https://www.facebook.com/share/p/19pq8kiNjh/"],["Seminar on AI & Freelancing","Participated in the Green EEE Club seminar, The New Path to Career Success for EEE Graduates, at Green University of Bangladesh — October 13, 2026.","https://www.facebook.com/share/p/15369cgCRyL/"],["Research Genesis, Session 2","Follow-up session of the Research Genesis series by the Green University Research & Publication Community (GURPC) — July 9, 2026.","https://www.facebook.com/share/p/19m8LQiNkk/"]],
  certs:[{t:"Certificate of Participation: Mastering Research Methodology — From Concept to Framework (Research Genesis Foundational Bootcamp)",o:"Green University Research and Publication Community (GURPC)",d:"July 6, 2026",img:CERT1},{t:"Certificate of Completion: Arduino Hands-On Workshop — Bridging Theory with Practical Embedded Systems Learning",o:"IEEE GUB Student Branch, Green University of Bangladesh",d:"July 6, 2026",img:CERT2}]
 };
 const $=s=>document.querySelector(s),esc=s=>s.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])),pad=i=>String(i+1).padStart(2,"0");
 $("#pimg").src=PHOTO;
 for(const [id,u] of [["#li",CONFIG.linkedin],["#gh",CONFIG.github],["#fb",CONFIG.facebook],["#ig",CONFIG.instagram],["#wa",CONFIG.whatsapp],["#x",CONFIG.x]]){const a=$(id);if(!u||u==="#")a.hidden=true;else a.href=u}
-const mqh=CONFIG.skills.map((s,i)=>`<span>${esc(s[0])}</span><span><b>✦</b></span>`).join("");$("#mq").innerHTML=mqh+mqh;
 $("#gl").innerHTML=CONFIG.glance.map(g=>`<div><span>${esc(g[0])}</span><b>${esc(g[1])}</b></div>`).join("");
 $("#tl").innerHTML=CONFIG.edu.map((e,i)=>`<div><span class="lab">${esc(e[0])}</span><span class="pill${i?"":" on"}">${esc(e[1])}</span><p style="margin-top:10px;font-size:12px;letter-spacing:.16em;text-transform:uppercase">${esc(e[2])}</p><h3>${esc(e[3])}</h3><p>${esc(e[4])}</p>${e[5]?`<a class="vl" href="${esc(e[5])}" target="_blank" rel="noopener" aria-label="Visit ${esc(e[3])} website">Visit Website <span aria-hidden="true">↗</span></a>`:""}</div>`).join("");
 $("#skg").innerHTML=CONFIG.skills.map((s,i)=>`<div><i>${pad(i)}</i><h3>${esc(s[0])}</h3><p>${esc(s[1])}</p></div>`).join("");
-$("#rsg").innerHTML=CONFIG.research.map((r,i)=>`<div><i>${pad(i)}</i><h3>${esc(r[0])}</h3><p>${esc(r[1])}</p></div>`).join("");
+$("#rsg").innerHTML=CONFIG.research.map((r,i)=>`<div><i>${pad(i)}</i><h3>${esc(r[0])}</h3><p>${esc(r[1])}</p>${r[2]?`<a class="ext" href="${esc(r[2])}" target="_blank" rel="noopener">View post ↗</a>`:""}</div>`).join("");
 $("#prg").innerHTML=CONFIG.projects.map((p,i)=>`<article class="proj"><div class="th"><img src="${esc(p.img)}" alt="${esc(p.t)} poster" loading="lazy"></div><div><span class="lab">${pad(i)} / ${String(CONFIG.projects.length).padStart(2,"0")} · ${esc(p.s)}</span><h3>${esc(p.t)}</h3><p>${esc(p.d)}</p><div class="tags">${p.tech.map(x=>`<span>${esc(x)}</span>`).join("")}</div></div></article>`).join("");
 $("#ceg").innerHTML=CONFIG.certs.map(c=>`<article class="cc"><div class="th"><img src="${esc(c.img)}" alt="${esc(c.t)}" loading="lazy"></div><span class="lab">${esc(c.d)}</span><h3>${esc(c.t)}</h3><p>${esc(c.o)}</p></article>`).join("");
 document.addEventListener("click",e=>{const lb=$("#lb");if(e.target.closest(".th img")){lb.innerHTML='<img alt="" src="'+e.target.src+'">';lb.style.display="grid"}else if(e.target.closest("#lb"))lb.style.display="none"});
@@ -235,15 +361,74 @@ if(!("IntersectionObserver" in window)){document.querySelectorAll(".rv").forEach
 const io=new IntersectionObserver(en=>en.forEach(x=>{if(x.isIntersecting){x.target.classList.add("in");io.unobserve(x.target)}}),{threshold:.08});document.querySelectorAll(".rv").forEach(e=>io.observe(e))})();
 // mobile menu
 (()=>{const h=document.querySelector("header"),b=h.querySelector(".mb"),set=o=>{h.classList.toggle("open",o);b.setAttribute("aria-expanded",o)};b.onclick=()=>set(!h.classList.contains("open"));h.querySelectorAll(".links a").forEach(a=>a.addEventListener("click",()=>set(false)));addEventListener("resize",()=>{if(innerWidth>860)set(false)})})();
-// intro splash
-(()=>{if(matchMedia("(prefers-reduced-motion:reduce)").matches)return;const d=document.createElement("div");d.id="intro";let n=0;const L=t=>'<span class="ln">'+[...t].map(c=>`<span class="c" style="--i:${n++}">${c===" "?"&nbsp;":c}</span>`).join("")+"</span>";
-d.innerHTML='<div class="in"><small>PORTFOLIO · EEE</small><b>'+L("Anjim Arif")+L("Risvy")+'</b><em>Electrical &amp; Electronic Engineering</em><div class="bar"><div></div></div><p class="pc">0%</p><button>Skip intro</button></div>';document.body.appendChild(d);
-const pc=d.querySelector(".pc"),t0=performance.now(),D=2200;let done=0;const tick=t=>{if(done)return;const p=Math.min(1,(t-t0-200)/D);pc.textContent=Math.round(Math.max(0,p)*100)+"%";p<1&&requestAnimationFrame(tick)};requestAnimationFrame(tick);
-const h=()=>{if(done)return;done=1;d.classList.add("hide");setTimeout(()=>d.remove(),1100)};d.querySelector("button").onclick=h;setTimeout(h,2700)})();
+// intro gate: close the circuit to unlock the portfolio
+(()=>{let ok=false;try{ok=sessionStorage.getItem("circuit-ok")==="1"}catch(_){}if(ok){document.documentElement.classList.add("go");return}
+const d=document.createElement("div");d.id="intro";d.className="g";let n=0;const L=t=>'<span class="ln">'+[...t].map(c=>`<span class="c" style="--i:${n++}">${c===" "?"&nbsp;":c}</span>`).join("")+"</span>";
+d.innerHTML='<div class="in"><small>PORTFOLIO · EEE</small><b>'+L("Anjim Arif")+L("Risvy")+'</b><em>Complete the circuit to unlock</em>'+
+'<svg class="ckt" viewBox="0 0 320 170" role="img" aria-label="Simple circuit: battery, open switch, resistor and LED">'+
+'<g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">'+
+'<path d="M40 66V40H110M170 40H260V70M260 94V140H190M130 140H40V76"/>'+
+'<path d="M26 66H54M33 77H47" stroke-width="4"/>'+
+'<path d="M190 140l-6-10-12 20-12-20-12 20-12-20-6 10" stroke-width="2.5" transform="translate(0 0)"/>'+
+'<path class="led" d="M246 70H274L260 94Z"/><path d="M246 94H274"/>'+
+'</g>'+
+'<g class="flow" fill="none" stroke="var(--acc)" stroke-width="3.5" stroke-linecap="round"><path d="M40 66V40H260V70M260 94V140H40V76"/></g>'+
+'<g class="rays" stroke="var(--acc)" stroke-width="2.5" stroke-linecap="round"><path d="M284 62l12-8M290 80h14M284 98l12 8"/></g>'+
+'<g id="sw" role="button" tabindex="0" aria-label="Close the switch to complete the circuit" style="cursor:pointer"><rect x="96" y="2" width="90" height="70" fill="transparent"/>'+
+'<circle class="ping" cx="140" cy="40" r="26" fill="none" stroke="var(--acc)" stroke-width="2"/>'+
+'<g class="blade" style="transform-origin:110px 40px;transform:rotate(-32deg)"><path d="M110 40H172" stroke="var(--acc)" stroke-width="4" stroke-linecap="round"/></g>'+
+'<circle cx="110" cy="40" r="5" fill="var(--bg)" stroke="currentColor" stroke-width="3"/><circle cx="170" cy="40" r="5" fill="var(--bg)" stroke="currentColor" stroke-width="3"/></g>'+
+'<g fill="currentColor" font-family="Space Grotesk,sans-serif" font-size="12" font-weight="600"><text x="62" y="70">+</text><text x="62" y="86">9V</text><text x="136" y="166">R</text><text x="196" y="86">LED</text></g>'+
+'</svg><p class="msg">Tap the switch to close the loop</p></div>';
+document.body.appendChild(d);
+let done=0,closed=0;const msg=d.querySelector(".msg"),sw=d.querySelector("#sw");
+const h=()=>{if(done)return;done=1;try{sessionStorage.setItem("circuit-ok","1")}catch(_){}d.classList.add("hide");document.documentElement.classList.add("go");setTimeout(()=>d.remove(),1100)};
+const close=()=>{if(closed)return;closed=1;d.querySelector(".blade").style.transform="rotate(0deg)";d.classList.add("on");msg.textContent="Circuit complete — welcome!";setTimeout(h,1500)};
+sw.addEventListener("click",close);sw.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();close()}});
+const autoClose=setTimeout(h,7000);
+d.addEventListener("transitionend",e=>{if(e.target===d&&d.classList.contains("hide"))clearTimeout(autoClose)});
+setTimeout(()=>{try{sw.focus({preventScroll:true})}catch(_){}},600)})();
 </script>
-<div id="ai-fab"><div class="ai-nudge" id="ai-nudge" hidden>👋 Hi! Ask me anything about Risvy</div><button class="tip" type="button" id="ai-tip">Ask Risvy AI</button>
-<button id="ai-btn" type="button" aria-label="Open Ask Risvy AI chat" aria-expanded="false" aria-controls="ai-panel"><span class="dot"></span><svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="8" width="16" height="12" rx="3.5"/><path d="M12 8V5"/><circle cx="12" cy="4" r="1"/><path d="M2 13v3M22 13v3"/><circle cx="9" cy="13" r=".8" fill="currentColor"/><circle cx="15" cy="13" r=".8" fill="currentColor"/><path d="M9.5 16.5c1.5 1 3.5 1 5 0"/></svg></button></div>
-<section id="ai-panel" role="dialog" aria-label="Ask Risvy AI" aria-modal="false" style="padding:0">
+<script>
+// motion: skills ticker, count-up stats, card spotlight, hero parallax, staggered reveals
+(()=>{const C=CONFIG,$=id=>document.getElementById(id);
+const reduce=matchMedia("(prefers-reduced-motion:reduce)").matches;
+document.querySelectorAll(".rv").forEach(r=>[...r.children].forEach((c,i)=>c.style.setProperty("--k",Math.min(i,8))));
+new MutationObserver(()=>document.querySelectorAll(".rv").forEach(r=>[...r.children].forEach((c,i)=>{if(!c.style.getPropertyValue("--k"))c.style.setProperty("--k",Math.min(i,8))}))).observe(document.body,{childList:true,subtree:true});
+document.addEventListener("pointermove",e=>{const t=e.target.closest&&e.target.closest(".rows>div,#skg>div,.cc,.proj");if(!t)return;const r=t.getBoundingClientRect();t.style.setProperty("--mx",e.clientX-r.left+"px");t.style.setProperty("--my",e.clientY-r.top+"px")},{passive:true});
+const img=document.querySelector(".hero .pt img");if(img&&!reduce){let tk=0;addEventListener("scroll",()=>{if(tk)return;tk=1;requestAnimationFrame(()=>{tk=0;const y=scrollY;if(y<900)img.style.setProperty("--py",(y*.12)+"px")})},{passive:true})}
+})();
+</script>
+<div id="cvm" role="dialog" aria-modal="true" aria-labelledby="cvt"><div class="bx"><button class="x" type="button" aria-label="Close">×</button>
+<h3 id="cvt">Request my CV</h3><p class="sub">Leave your name and email and I will send my CV to your inbox personally.</p>
+<form id="cvf"><label class="fl">Full Name<input name="n" placeholder="Your full name" required maxlength="80" autocomplete="name"></label>
+<label class="fl">Email Address<input name="e" type="email" placeholder="you@example.com" required maxlength="120" autocomplete="email"></label>
+<label class="fl">Company / purpose (optional)<input name="p" placeholder="e.g. Internship at XYZ Ltd." maxlength="140"></label>
+<input class="hp" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true">
+<button class="btn w100" type="submit">Send Request <span aria-hidden="true">↗</span></button><p class="st" id="cvs" role="status"></p></form></div></div>
+<script>
+// CV request: sends the visitor's name + email to the owner, who replies with the CV
+(()=>{const M=document.getElementById("cvm"),F=document.getElementById("cvf"),S=document.getElementById("cvs"),btn=F.querySelector("button");let last=null;
+const open=()=>{last=document.activeElement;S.textContent="";S.className="st";M.classList.add("open");setTimeout(()=>F.n.focus(),50)};
+const close=()=>{M.classList.remove("open");last&&last.focus&&last.focus()};
+window.reqCV=open;document.getElementById("cv").addEventListener("click",open);
+M.querySelector(".x").onclick=close;M.addEventListener("mousedown",e=>{if(e.target===M)close()});
+addEventListener("keydown",e=>{if(e.key==="Escape"&&M.classList.contains("open"))close()});
+F.onsubmit=async e=>{e.preventDefault();if(F.botcheck.value)return;
+const n=F.n.value.trim(),em=F.e.value.trim(),p=F.p.value.trim();
+const msg="CV request\n\nName: "+n+"\nEmail: "+em+(p?"\nPurpose: "+p:"")+"\n\nPlease reply to this email with your CV attached.";
+if(!CONFIG.formKey){location.href="mailto:260001029.eee@gmail.com?subject="+encodeURIComponent("CV request from "+n)+"&body="+encodeURIComponent(msg);return}
+btn.disabled=true;S.className="st";S.textContent="Sending…";
+try{const fd=new FormData();fd.append("access_key",CONFIG.formKey);fd.append("from_name","Portfolio CV request");fd.append("subject","CV request from "+n);fd.append("name",n);fd.append("email",em);fd.append("message",msg);
+const r=await fetch("https://api.web3forms.com/submit",{method:"POST",body:fd});let j={};try{j=await r.json()}catch(_){}
+if(!r.ok||!j.success){S.textContent="Could not send. Please email 260001029.eee@gmail.com directly.";btn.disabled=false;return}
+F.reset();S.className="st ok";S.textContent="Thank you! I will send my CV to your email soon.";setTimeout(close,3200)}
+catch(_){S.textContent="Could not send (open the live site, not a local file). Please email 260001029.eee@gmail.com directly."}
+btn.disabled=false}})();
+</script>
+<div id="ai-fab"><div class="ai-nudge" id="ai-nudge" hidden>👋 Have a question about this portfolio?</div><button class="tip" type="button" id="ai-tip">Portfolio Assistant</button>
+<button id="ai-btn" type="button" aria-label="Open Portfolio Assistant chat" aria-expanded="false" aria-controls="ai-panel"><span class="dot"></span><svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="8" width="16" height="12" rx="3.5"/><path d="M12 8V5"/><circle cx="12" cy="4" r="1"/><path d="M2 13v3M22 13v3"/><circle cx="9" cy="13" r=".8" fill="currentColor"/><circle cx="15" cy="13" r=".8" fill="currentColor"/><path d="M9.5 16.5c1.5 1 3.5 1 5 0"/></svg></button></div>
+<section id="ai-panel" role="dialog" aria-label="Portfolio Assistant" aria-modal="false" aria-live="polite" style="padding:0">
 <div class="ai-h"><div class="ai-av"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="8" width="16" height="12" rx="3.5"/><path d="M12 8V5"/><circle cx="12" cy="4" r="1"/><circle cx="9" cy="13" r=".8" fill="currentColor"/><circle cx="15" cy="13" r=".8" fill="currentColor"/><path d="M9.5 16.5c1.5 1 3.5 1 5 0"/></svg></div>
 <div class="ai-t"><b>Ask Risvy <i>AI</i></b><small>Personal portfolio assistant</small></div>
 <button class="ai-ib" type="button" id="ai-reset" aria-label="Restart chat" title="Restart"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 3v6h-6"/></svg></button>
@@ -255,7 +440,7 @@ const h=()=>{if(done)return;done=1;d.classList.add("hide");setTimeout(()=>d.remo
 <div class="ai-ft">Verified portfolio knowledge · No external AI service</div></section>
 
 <script>
-// ===== Ask Risvy AI v2: runs in the browser, answers come from CONFIG above =====
+// ===== Portfolio Assistant v2: runs in the browser, answers come from CONFIG above =====
 (()=>{
 const $$=id=>document.getElementById(id);
 const P=$$("ai-panel"),M=$$("ai-m"),F=$$("ai-f"),I=$$("ai-i"),B=$$("ai-btn"),CH=$$("ai-ch"),FAB=$$("ai-fab"),MIC=$$("ai-mic"),NU=$$("ai-nudge");
@@ -268,24 +453,25 @@ const greet=()=>hr<12?"Good morning":hr<17?"Good afternoon":"Good evening";
 
 /* ---------- answers ---------- */
 const A={
-hello:()=>`${greet()}! 👋 I'm **Ask Risvy AI**. I can tell you about ${first}'s education, skills, projects, activities, certificates and contact details. What would you like to know?`,
+hello:()=>`${greet()}! 👋 I'm **Portfolio Assistant**. I can tell you about ${first}'s education, skills, projects, activities, certificates and contact details. What would you like to know?`,
 about:()=>`**${name}** is a ${g("Degree")} student in ${g("Department")} at ${g("University")} (${g("Current level")}), based in ${g("Location")}. He is curious about electrical engineering, electronics, robotics and emerging technologies, and learns through research and hands-on work.`,
 edu:()=>"**Education**\n"+C.edu.map(e=>`• ${e[3]} (${e[0]}): ${e[4]}`).join("\n"),
 uni:()=>`${first} is studying ${g("Department")} at **${g("University")}**, currently in his ${g("Current level")}.`,
 skills:()=>"**Areas of study & practice**\n"+C.skills.map(s=>`• ${s[0]}: ${s[1]}`).join("\n"),
 projects:()=>"**Projects**\n"+C.projects.map(p=>`• ${p.t} (${p.s})\n  ${"Tech"}: ${p.tech.join(", ")}`).join("\n")+"\n\n"+`See it in the ${go("#projects","Projects section")}.`,
 solar:()=>{const p=C.projects[0];return `**${p.t}** — ${p.s}\n${p.d}`},
-research:()=>"**Research & activities**\n"+C.research.map(r=>`• ${r[0]}: ${r[1]}`).join("\n"),
+research:()=>"**Research & activities**\n"+C.research.map(r=>`• ${r[0]}: ${r[1]}${r[2]?" "+link(r[2],"View post"):""}`).join("\n"),
+seminar:()=>{const r=C.research.find(x=>/seminar/i.test(x[0]))||C.research.find(x=>/career success/i.test(x[1]))||C.research[0];return `**${r[0]}**\n${r[1]}\n\n`+(r[2]?link(r[2],"View the original post on Facebook"):"")},
 certs:()=>"**Certificates**\n"+C.certs.map(c=>`• ${c.t}\n  ${c.o} · ${c.d}`).join("\n")+"\n\n"+`View them in the ${go("#achievements","Certificates section")}. Tap a thumbnail to enlarge.`,
-arduino:()=>"He completed the **Arduino Hands-On Workshop** (IEEE GUB Student Branch) on practical embedded systems learning, and studies microcontrollers and Arduino-based projects.",
-ieee:()=>"He is active in the **IEEE GUB Student Branch** and completed their Arduino Hands-On Workshop on July 6, 2026.",
+arduino:()=>{const r=C.research.find(x=>x[0].startsWith("Arduino"));return "He completed the **Arduino Hands-On Workshop** (IEEE GUB Student Branch) on July 6, 2026 at Green University of Bangladesh, covering Arduino programming, sensors and embedded systems."+(r&&r[2]?"\n\n"+link(r[2],"View the event post"):"")},
+ieee:()=>{const r=C.research.find(x=>x[0].startsWith("Arduino"));return "He is active in the **IEEE GUB Student Branch** and completed their Arduino Hands-On Workshop on July 6, 2026."+(r&&r[2]?"\n\n"+link(r[2],"View the event post"):"")},
 contact:()=>`**Get in touch with ${first}**\n• Email: ${link("mailto:"+mail,mail)}\n• WhatsApp: ${link(C.whatsapp,"Message on WhatsApp")}\n• Location: ${g("Location")}\n\nOr use the ${go("#contact","contact form")}.`,
 social:()=>{const s=[["GitHub",C.github],["Facebook",C.facebook],["Instagram",C.instagram],["X",C.x],["LinkedIn",C.linkedin]].filter(x=>x[1]&&x[1]!=="#");return "**Find him online**\n"+s.map(x=>"• "+link(x[1],x[0])).join("\n")},
 location:()=>`${first} is based in **${g("Location")}** and studies at ${g("University")}.`,
-hire:()=>`${first} is looking for opportunities to learn, collaborate and grow. The best way to start is by email at ${link("mailto:"+mail,mail)} or through the ${go("#contact","contact form")}.`,
-cv:()=>`There's no downloadable CV on the site yet, but ${go("#education","Education")}, ${go("#skills","Skills")} and ${go("#achievements","Certificates")} cover the same ground. For a CV, email ${link("mailto:"+mail,mail)}.`,
+hire:()=>`${first} is seeking an internship or entry-level position in electronics, and is keen to learn, collaborate and grow. Start with an email at ${link("mailto:"+mail,mail)}, the ${go("#contact","contact form")}, or <a href="#" data-cv>request his CV</a>.`,
+cv:()=>`${first} shares his CV on request. <a href="#" data-cv>Request the CV here</a> and he will send it to your email. You can also write to ${link("mailto:"+mail,mail)}.`,
 help:()=>`I can help with:\n• About ${first}\n• Education & university\n• Skills\n• Projects\n• Research & activities\n• Certificates\n• Contact & social links`,
-who:()=>"I'm **Ask Risvy AI**, a portfolio assistant. I only use the information published on this site, with no external AI service, so my answers stay accurate to what's here.",
+who:()=>"I'm **Portfolio Assistant**, a portfolio assistant. I only use the information published on this site, with no external AI service, so my answers stay accurate to what's here.",
 thanks:()=>"You're welcome! 😊 Anything else you'd like to know?",
 bye:()=>"Thanks for visiting! Feel free to get in touch anytime. 👋",
 fallback:()=>`Hmm, I'm not sure about that, since I only know what's on this portfolio. Try asking about ${first}'s education, skills, projects, certificates or contact details.`
@@ -303,7 +489,8 @@ uni:[1.7,"university","green","gub","department","eee","major"],
 skills:[1.7,"skill","skills","tools","technology","expert","ability","proficiency","know"],
 projects:[1.7,"project","projects","built","build"],
 solar:[2.4,"solar","space","rectenna","poster","orbit","microwave"],
-research:[1.7,"research","activity","activities","bootcamp","genesis","gurpc","participation"],
+research:[1.7,"research","activity","activities","bootcamp","genesis","gurpc","session","participation","events","event"],
+seminar:[2.4,"seminar","freelancing","freelance","green eee club","eee club","career success"],
 certs:[2,"certificate","certificates","achievement","achievements","award","credential"],
 arduino:[2.4,"arduino","embedded","workshop","microcontroller"],
 ieee:[2.4,"ieee"],
@@ -319,8 +506,8 @@ const detect=q=>{const t=q.toLowerCase().replace(/[?!.,;:()"']/g," ").trim(),tk=
  for(const k in K){const [w,...ws]=K[k];let s=0;for(const x of ws){if(x.includes(" ")){if(t.includes(x))s+=w*1.4}else if(/[^\x00-\x7f]/.test(x)){if(t.includes(x))s+=w}else for(const y of tk){if(y===x)s+=w;else if(x.length>=5&&y.length>=5&&lev(x,y)<=1)s+=w*.8}}
   if(s>bs){bs=s;best=k}}
  return bs>=1?best:null};
-const FU={hello:["help","about","projects"],about:["edu","skills","projects"],edu:["skills","certs","more"],uni:["research","skills","projects"],skills:["projects","certs","contact"],projects:["more","certs","contact"],solar:["research","certs","contact"],research:["certs","arduino","contact"],certs:["projects","contact","social"],arduino:["ieee","certs","projects"],ieee:["research","certs","contact"],contact:["social","hire","projects"],social:["contact","about","projects"],location:["about","contact","edu"],hire:["contact","cv","projects"],cv:["contact","edu","skills"],help:["about","projects","contact"],thanks:["projects","contact","skills"],more:["contact","skills","certs"],fallback:["help","about","projects"],who:["help","about","contact"],bye:["about","projects","contact"]};
-const LB={help:["What can you do?"],about:["About Risvy"],projects:["Projects"],edu:["Education"],skills:["Skills"],certs:["Certificates"],contact:["Contact"],social:["Social links"],hire:["Work with him"],more:["More details"],research:["Research"],arduino:["Arduino"],ieee:["IEEE GUB","IEEE GUB"],cv:["CV / Resume"]};
+const FU={seminar:["research","certs","contact"],hello:["help","about","projects"],about:["edu","skills","projects"],edu:["skills","certs","more"],uni:["research","skills","projects"],skills:["projects","certs","contact"],projects:["more","certs","contact"],solar:["research","certs","contact"],research:["certs","arduino","contact"],certs:["projects","contact","social"],arduino:["ieee","certs","projects"],ieee:["research","certs","contact"],contact:["social","hire","projects"],social:["contact","about","projects"],location:["about","contact","edu"],hire:["contact","cv","projects"],cv:["contact","edu","skills"],help:["about","projects","contact"],thanks:["projects","contact","skills"],more:["contact","skills","certs"],fallback:["help","about","projects"],who:["help","about","contact"],bye:["about","projects","contact"]};
+const LB={seminar:["AI & Freelancing seminar"],help:["What can you do?"],about:["About Risvy"],projects:["Projects"],edu:["Education"],skills:["Skills"],certs:["Certificates"],contact:["Contact"],social:["Social links"],hire:["Work with him"],more:["More details"],research:["Research"],arduino:["Arduino"],ieee:["IEEE GUB","IEEE GUB"],cv:["CV / Resume"]};
 const MORE={projects:"solar",solar:"research",edu:"uni",about:"skills",skills:"projects",certs:"research",contact:"social",research:"certs",hello:"help"};
 let last="";
 const esc2=s=>s.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
@@ -347,7 +534,7 @@ async function ask(q,instant){q=q.trim();if(!q||busy)return;busy=true;
  if(ans){add("bot",fmt(ans));followUps("fallback")}
  else{const key=k||"fallback";add("bot",fmt(A[key]()));cardsFor(key).forEach(h=>{const w=document.createElement("div");w.innerHTML=h;M.appendChild(w.firstChild)});followUps(key);if(k)last=k}
  busy=false;scroll()}
-const start=()=>{M.innerHTML="";last="";hist=[];save();add("bot",fmt(`${greet()}! I'm **Ask Risvy AI**, your personal guide to ${first}'s portfolio. Ask about his projects, skills, certificates, or how to contact him.`));
+const start=()=>{M.innerHTML="";last="";hist=[];save();add("bot",fmt(`${greet()}! I'm **Portfolio Assistant**, your personal guide to ${first}'s portfolio. Ask about his projects, skills, certificates, or how to contact him.`));
  const s=document.createElement("div");s.className="ai-sg";s.innerHTML="<small>Start with a question</small>"+["What can you help me explore?","Which projects has Risvy worked on?","What certificates does he have?"].map(x=>`<button type="button" class="ai-q">${esc2(x)}<span>↗</span></button>`).join("");M.appendChild(s)};
 CH.innerHTML=["About Risvy","Say Hello","Projects","Skills","Education","Contact"].map(x=>`<button type="button">${esc2(x)}</button>`).join("");
 
@@ -359,6 +546,7 @@ addEventListener("keydown",e=>{if(e.key==="Escape"&&isOpen())open(false)});
 F.onsubmit=e=>{e.preventDefault();const v=I.value;I.value="";ask(v)};
 M.addEventListener("click",e=>{
  const q=e.target.closest(".ai-q");if(q){ask(q.firstChild.textContent);q.closest(".ai-sg").remove();return}
+ const cv=e.target.closest("a[data-cv]");if(cv){e.preventDefault();open(false);window.reqCV&&window.reqCV();return}
  const f=e.target.closest(".ai-fu button");if(f){ask(f.textContent);return}
  const z=e.target.closest("img[data-zoom]");if(z){const lb=$$("lb");lb.innerHTML='<img alt="" src="'+z.src+'">';lb.style.display="grid";return}
  if(e.target.closest("a[data-go]")&&innerWidth<=860)open(false)});
